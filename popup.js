@@ -1,15 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
   var searchButtons = document.getElementsByClassName("searchButton");
   var list = document.getElementById("list");
+  var myLocalTodos = JSON.parse(localStorage.getItem("my-todos")) || [];
 
-  (() => {
-    var localText = localStorage.getItem("text");
-    if (checkInput(localText)) {
-      addGoogleText(localText);
-    } else {
-      addValidLink(localText);
-    }
-  })();
+  if (myLocalTodos.length !== 0) {
+    myLocalTodos.forEach(function (value) {
+      if (checkInput(value)) {
+        addGoogleText(value);
+      } else {
+        addValidLink(value);
+      }
+    });
+  }
   function handleSearchGoogle() {
     var searchText = this.innerText;
     var searchQuery = encodeURIComponent(searchText);
@@ -36,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
     myAnchor.setAttribute("href", inputElement.value);
     myAnchor.setAttribute("target", "blank");
     myAnchor.textContent = input;
+    if (!myLocalTodos.includes(input)) {
+      myLocalTodos.push(input); //add in array
+    }
+    localStorage.setItem("my-todos", JSON.stringify(myLocalTodos)); //push in same key array
     list.append(myAnchor);
   }
 
@@ -43,10 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var element = document.createElement("a");
     element.classList.add("searchButton");
     element.innerText = input;
-    localStorage.setItem("text", input);
-
+    if (!myLocalTodos.includes(input)) {
+      myLocalTodos.push(input); //add in array
+    }
+    localStorage.setItem("my-todos", JSON.stringify(myLocalTodos)); //push in same key array
     element.addEventListener("click", handleSearchGoogle);
-
     list.append(element);
   }
 
