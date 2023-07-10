@@ -10,20 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  let inputElement = document.getElementById("queryText");
-  let input = inputElement.value;
-  console.log({ input });
-
-  let list = document.getElementById("list");
-  let element = document.createElement("p");
-  element.innerText = input;
-  list.append(element);
-
-  console.log({ element });
-
-  let addBtn = document.getElementsById("add-btn");
+  var inputElement = document.getElementById("queryText");
+  var addBtn = document.getElementById("add-btn");
 
   addBtn.addEventListener("click", function () {
+    var list = document.getElementById("list");
+
+    var element = document.createElement("p");
+    element.classList.add("searchButton");
+    element.innerText = inputElement.value;
+
+    list.append(element);
+
     console.log("clicked");
   });
 });

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Google Search Extension",
+  "name": "Goto Search Extension",
   "version": "1.0",
   "description": "Search a specific text in Google",
   "permissions": ["activeTab"],
@@ -8,9 +8,6 @@
     "default_popup": "popup.html"
   },
   "icons": {
-    "16": "images/icon.png",
-    "32": "images/icon.png",
-    "48": "images/icon.png",
-    "128": "images/icon.png"
+    "16": "images/icon.png"
   }
 }
