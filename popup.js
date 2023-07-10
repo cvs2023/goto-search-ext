@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (myLocalTodos.length !== 0) {
     myLocalTodos.forEach(function (value) {
-      if (checkInput(value)) {
-        addGoogleText(value);
-      } else {
+      if (checkValidInput(value)) {
         addValidLink(value);
+      } else {
+        addGoogleText(value);
       }
     });
   }
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var searchText = this.innerText;
     var searchQuery = encodeURIComponent(searchText);
     var searchURL = "https://www.google.com/search?q=" + searchQuery;
+
     window.open(searchURL, "_blank");
   }
 
@@ -26,16 +27,16 @@ document.addEventListener("DOMContentLoaded", function () {
   var inputElement = document.getElementById("queryText");
   var addBtn = document.getElementById("add-btn");
 
-  function checkInput(input) {
+  function checkValidInput(input) {
     var linkRegex =
       /^(https?:\/\/)?([\w-]+(\.[\w-]+)+\/?)([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?$/;
     return linkRegex.test(input);
   }
 
-  function addGoogleText() {
+  function addGoogleText(input) {
     var myAnchor = document.createElement("a");
     myAnchor.classList.add("searchButton");
-    myAnchor.setAttribute("href", inputElement.value);
+    myAnchor.setAttribute("href", input);
     myAnchor.setAttribute("target", "blank");
     myAnchor.textContent = input;
     if (!myLocalTodos.includes(input)) {
@@ -60,10 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
   addBtn.addEventListener("click", function () {
     var input = inputElement.value;
 
-    if (checkInput(input)) {
-      addGoogleText(input);
-    } else {
+    if (checkValidInput(input)) {
       addValidLink(input);
+    } else {
+      addGoogleText(input);
     }
   });
 });
