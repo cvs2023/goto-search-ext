@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "name": "Google Search Extension",
+  "version": "1.0",
+  "description": "Search a specific text in Google",
+  "permissions": ["activeTab"],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
