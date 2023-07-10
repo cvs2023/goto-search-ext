@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "Search a specific text in Google",
   "permissions": ["activeTab"],
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html"
   },
   "icons": {
