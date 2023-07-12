@@ -22,6 +22,6 @@ After installation of this extension you can see some static goto google searche
 
   # Note
   - In this i added in local storage with use of HTML DOM.
-  - In version 2 of this repo i will add chrome methods to do the same.
-  - Try to find in goto-search-ext-V2
+  - In version 2 of this repo i will add chrome Api to do the same.
+  - Try to find goto-search-ext-V2 in repo.
 
